@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entre Voisins Levallois - Appartement familial à louer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #4a4a4a;
+            background: #fafaf8;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #8b7355 0%, #a0826d 100%);
+            color: #fafaf8;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        nav {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 1rem;
+        }
+        
+        nav li {
+            margin: 0 1.5rem;
+        }
+        
+        nav a {
+            color: #8b7355;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #6d5d4b;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            margin: 4rem 0;
+        }
+        
+        h2 {
+            color: #8b7355;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            background: linear-gradient(135deg, #f5f1ed 0%, #e8e3dc 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b7355;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid #e8e3dc;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: #8b7355;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .project-section {
+            background: linear-gradient(135deg, #f5f1ed 0%, #faf8f5 100%);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+        
+        .project-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .highlight-box {
+            background: white;
+            border-left: 4px solid #8b7355;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        
+        .price-box {
+            background: linear-gradient(135deg, #8b7355 0%, #a0826d 100%);
+            color: #fafaf8;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .price-box h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-box p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        
+        .calendar {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+        
+        .calendar h3 {
+            color: #8b7355;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .availability-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .availability-list li {
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: #f5f1ed;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .available {
+            color: #7a9b76;
+            font-weight: 600;
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin: 2rem 0;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #8b7355 0%, #a0826d 100%);
+            color: #fafaf8;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #fafaf8;
+            color: #8b7355;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        footer {
+            background: #6d5d4b;
+            color: #fafaf8;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏠 Entre Voisins Levallois</h1>
+        <p>Un appartement familial pour la communauté levalloisienne</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#projet">Le Projet</a></li>
+            <li><a href="#appartement">L'Appartement</a></li>
+            <li><a href="#modalites">Modalités</a></li>
+            <li><a href="#disponibilites">Disponibilités</a></li>
+            <li><a href="#localisation">Localisation</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="projet" class="project-section">
+            <h2 style="color: #8b7355;">Le Projet "Entre Voisins"</h2>
+            <p>
+                <strong>Entre Voisins Levallois</strong> n'est pas un simple Airbnb. C'est une initiative de partage 
+                au sein de notre communauté levalloisienne, basée sur la confiance et le lien de voisinage.
+            </p>
+            <p>
+                Cet appartement est notre <strong>résidence principale</strong>, notre chez-nous familial où nous vivons 
+                toute l'année. Lorsque nous nous absentons (environ 7 à 8 semaines par an), plutôt que de laisser 
+                l'appartement vide, nous avons choisi de le partager avec nos voisins.
+            </p>
+            <p>
+                Nous proposons cet espace à un <strong>tarif bien inférieur aux plateformes traditionnelles</strong> 
+                (environ 30% moins cher) car notre objectif n'est pas uniquement financier : nous souhaitons créer 
+                du lien, faciliter l'entraide locale et offrir une solution pratique aux Levalloisiens.
+            </p>
+            <p>
+                Que ce soit pour <strong>accueillir votre famille en visite</strong>, héberger des amis de passage, 
+                ou vous loger temporairement pendant des travaux dans votre logement, cet appartement est pensé 
+                pour répondre à vos besoins ponctuels.
+            </p>
+            <p style="font-weight: 600; font-size: 1.2rem; color: #8b7355; margin-top: 2rem;">
+                🤝 Parce qu'entre voisins, on se soutient !
+            </p>
+        </section>
+        
+        <section id="appartement">
+            <h2>L'Appartement</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">
+                Un spacieux appartement familial de 105m², baigné de lumière et récemment rénové, 
+                situé dans le quartier calme entre Louise Michel et Jean Zay.
+            </p>
+            
+            <div class="gallery">
+                <div class="gallery-item">📸 Salon lumineux</div>
+                <div class="gallery-item">📸 Chambre parentale</div>
+                <div class="gallery-item">📸 Chambre enfant 1</div>
+                <div class="gallery-item">📸 Chambre enfant 2</div>
+                <div class="gallery-item">📸 Cuisine équipée</div>
+                <div class="gallery-item">📸 Salle de bain</div>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🛏️ 3 Chambres</h3>
+                    <p>Une chambre parentale et deux chambres avec lits simples taille adulte</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🚿 2 Salles de bain</h3>
+                    <p>Deux salles de bain complètes et deux toilettes séparées</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📐 105m²</h3>
+                    <p>Un grand espace familial lumineux et confortable</p>
+                </div>
+                <div class="feature-card">
+                    <h3>✨ Rénové</h3>
+                    <p>Appartement récemment rénové avec goût</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3 style="color: #667eea; margin-bottom: 1rem;">Équipements inclus</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>🍳 Cuisine entièrement équipée</li>
+                    <li>🧺 Lave-linge</li>
+                    <li>📶 WiFi haut débit</li>
+                    <li>🚇 Métro Ligne 3 à 7 minutes à pied</li>
+                    <li>☀️ Appartement baigné de lumière naturelle</li>
+                    <li>🤫 Quartier calme et résidentiel</li>
+                </ul>
+            </div>
+            
+            <div class="price-box">
+                <h3>180€</h3>
+                <p>par nuit</p>
+                <p style="margin-top: 1rem; font-size: 0.95rem;">Tarif préférentiel pour les résidents de Levallois-Perret</p>
+            </div>
+        </section>
+        
+        <section id="modalites">
+            <h2>Modalités de Location</h2>
+            
+            <div class="highlight-box">
+                <h3 style="color: #8b7355; margin-bottom: 1rem;">📋 Conditions</h3>
+                <ul style="line-height: 2;">
+                    <li><strong>Réservé aux résidents de Levallois-Perret</strong> : Un justificatif de domicile vous sera demandé</li>
+                    <li><strong>Durée</strong> : Location de 3-4 jours à 1 semaine maximum</li>
+                    <li><strong>Tarif</strong> : 180€ par nuit</li>
+                    <li><strong>Caution</strong> : À définir ensemble lors de la rencontre</li>
+                </ul>
+            </div>
+            
+            <div class="highlight-box">
+                <h3 style="color: #667eea; margin-bottom: 1rem;">👋 Rencontre préalable vivement souhaitée</h3>
+                <p style="line-height: 1.8;">
+                    Avant toute réservation, nous vous proposons de nous rencontrer autour d'un café pour faire 
+                    connaissance et vous faire visiter l'appartement. Cette démarche est importante pour nous : 
+                    elle permet d'établir une relation de confiance mutuelle et vous donne l'occasion de découvrir 
+                    l'espace que vous allez proposer à vos proches ou utiliser vous-même.
+                </p>
+                <p style="margin-top: 1rem; line-height: 1.8;">
+                    C'est aussi l'occasion de répondre à toutes vos questions sur le quartier, les commerces à 
+                    proximité, les transports, et de partager nos bons plans de voisins !
+                </p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3 style="color: #667eea; margin-bottom: 1rem;">📝 Processus de réservation</h3>
+                <ol style="line-height: 2; padding-left: 1.5rem;">
+                    <li>Consultez le calendrier des disponibilités ci-dessous</li>
+                    <li>Contactez-nous par téléphone, WhatsApp ou email</li>
+                    <li>Programmez une visite de l'appartement</li>
+                    <li>Confirmez votre réservation</li>
+                    <li>Profitez de votre séjour ! 🏠</li>
+                </ol>
+            </div>
+        </section>
+        
+        <section id="disponibilites">
+            <h2>Disponibilités 2026</h2>
+            <div class="calendar">
+                <h3>📅 Périodes disponibles</h3>
+                <p style="text-align: center; color: #666; margin-bottom: 1.5rem;">
+                    Voici les périodes pendant lesquelles l'appartement est disponible à la location. 
+                    Ce calendrier est mis à jour régulièrement.
+                </p>
+                <ul class="availability-list">
+                    <li>
+                        <span><strong>Février 2026</strong> : Du 15 au 28 février</span>
+                        <span class="available">✓ Disponible</span>
+                    </li>
+                    <li>
+                        <span><strong>Avril 2026</strong> : Du 1er au 14 avril</span>
+                        <span class="available">✓ Disponible</span>
+                    </li>
+                    <li>
+                        <span><strong>Juillet 2026</strong> : Du 15 juillet au 15 août</span>
+                        <span class="available">✓ Disponible</span>
+                    </li>
+                    <li>
+                        <span><strong>Octobre 2026</strong> : Du 20 au 31 octobre</span>
+                        <span class="available">✓ Disponible</span>
+                    </li>
+                    <li>
+                        <span><strong>Décembre 2026</strong> : Du 20 au 31 décembre</span>
+                        <span class="available">✓ Disponible</span>
+                    </li>
+                </ul>
+                <p style="text-align: center; margin-top: 2rem; color: #667eea; font-weight: 600;">
+                    💡 Les dates sont indicatives. N'hésitez pas à nous contacter pour des demandes spécifiques !
+                </p>
+            </div>
+        </section>
+        
+        <section id="localisation">
+            <h2>Localisation</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">
+                Situé entre les quartiers Louise Michel et Jean Zay, dans un environnement calme et résidentiel
+            </p>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10493.857851482916!2d2.279358715778809!3d48.89457407922854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fc3f2e2e3eb%3A0x40b82c3688c9460!2sLevallois-Perret%2C%20France!5e0!3m2!1sfr!2sfr!4v1642584732195!5m2!1sfr!2sfr"
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+            <div class="highlight-box" style="margin-top: 2rem;">
+                <h3 style="color: #667eea; margin-bottom: 1rem;">🚇 Transports et commodités</h3>
+                <ul style="line-height: 2;">
+                    <li><strong>Métro Ligne 3</strong> : 7 minutes à pied</li>
+                    <li><strong>Commerces</strong> : Nombreux commerces de proximité</li>
+                    <li><strong>Écoles</strong> : Quartier familial avec écoles à proximité</li>
+                    <li><strong>Espaces verts</strong> : Parcs et squares accessibles</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="contact" class="contact-section">
+            <h2 style="color: white;">Contactez-nous</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                Une question ? Envie de programmer une visite ? N'hésitez pas à nous contacter !
+            </p>
+            <div class="contact-buttons">
+                <a href="https://wa.me/33682835445" class="btn" target="_blank">
+                    💬 WhatsApp
+                </a>
+                <a href="tel:+33682835445" class="btn">
+                    📞 Téléphone
+                </a>
+                <a href="mailto:your.email@gmail.com" class="btn">
+                    ✉️ Email
+                </a>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.95rem; opacity: 0.9;">
+                📱 06.82.83.54.45
+            </p>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Entre Voisins Levallois - Une initiative de partage local</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">
+            🤝 Parce qu'entre voisins, on se soutient
+        </p>
+    </footer>
+</body>
+</html>
